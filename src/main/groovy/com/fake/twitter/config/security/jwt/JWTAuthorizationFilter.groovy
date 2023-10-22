@@ -15,10 +15,9 @@ import javax.servlet.http.HttpServletResponse
 
 class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    public static final String HEADER_STRING = "Authorization"
-    public static final String TOKEN_PREFIX = "Bearer "
-    @Value('${auth.secret}')
-    public String SECRET
+    private static final String HEADER_STRING = "Authorization"
+    private static final String TOKEN_PREFIX = "Bearer "
+    private static final String SECRET = "SECRET_KEY"
 
 
     JWTAuthorizationFilter(AuthenticationManager authManager) {

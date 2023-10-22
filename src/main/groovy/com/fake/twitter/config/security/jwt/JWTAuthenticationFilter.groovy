@@ -18,10 +18,8 @@ import javax.servlet.http.HttpServletResponse
 class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager
 
-    @Value('${auth.expiration-time}')
-    public long EXPIRATION_TIME // 15 mins
-    @Value('${auth.secret}')
-    public String SECRET
+    private static final long EXPIRATION_TIME = 900_000 // 15 mins
+    private static final String SECRET = "SECRET_KEY"
 
 
     JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
