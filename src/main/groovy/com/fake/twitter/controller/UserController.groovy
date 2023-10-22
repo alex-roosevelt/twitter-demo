@@ -4,6 +4,7 @@ import com.fake.twitter.model.dto.UserDTO
 import com.fake.twitter.model.dto.UserSubscriptionDTO
 import com.fake.twitter.service.SubscribeService
 import com.fake.twitter.service.UserService
+import io.swagger.annotations.Api
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@Api(tags = "контролер користувача")
 @RequestMapping("/api/v1/users")
 class UserController {
 

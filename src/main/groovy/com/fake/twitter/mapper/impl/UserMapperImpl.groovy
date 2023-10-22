@@ -15,7 +15,7 @@ class UserMapperImpl implements UserMapper{
         userResponse.id = userEntity.id
         userResponse.firstName = userEntity.firstName
         userResponse.lastName = userEntity.lastName
-        userResponse.userName = userEntity.userName
+        userResponse.userName = userEntity.username
         userResponse.city = userEntity.city
         userResponse.country = userEntity.country
         userResponse.sex = userEntity.sex in ['MALE', 'FEMALE', 'OTHER'] ? userEntity.sex as SexEnum : null

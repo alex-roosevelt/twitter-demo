@@ -10,7 +10,7 @@ class UserEntity {
     private String id
     private String firstName
     private String lastName
-    private String userName
+    private String username
     private String sex
     private String country
     private String city
@@ -40,12 +40,12 @@ class UserEntity {
         this.lastName = lastName
     }
 
-    String getUserName() {
-        return userName
+    String getUsername() {
+        return username
     }
 
-    void setUserName(String userName) {
-        this.userName = userName
+    void setUsername(String userName) {
+        this.username = userName
     }
 
     String getSex() {
