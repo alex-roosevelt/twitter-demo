@@ -12,7 +12,7 @@ interface PostService {
 
     PostResponseDTO getPostById(String postId)
 
-    List<PostResponseDTO> getListPosts()
+    List<PostResponseDTO> getListPosts(String userId)
 
     void deletePost(String postId)
 

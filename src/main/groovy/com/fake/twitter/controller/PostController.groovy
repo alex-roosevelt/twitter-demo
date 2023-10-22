@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -51,8 +52,8 @@ class PostController {
     // get list post
     @Operation(summary = "отримання всіх постів")
     @GetMapping("/list")
-    ResponseEntity<List<PostResponseDTO>> getList() {
-        return ResponseEntity.ok(postService.getListPosts())
+    ResponseEntity<List<PostResponseDTO>> getList(@RequestParam String userId) {
+        return ResponseEntity.ok(postService.getListPosts(userId))
     }
 
     // delete post

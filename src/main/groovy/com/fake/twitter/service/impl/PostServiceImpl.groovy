@@ -61,8 +61,8 @@ class PostServiceImpl implements PostService {
     }
 
     @Override
-    List<PostResponseDTO> getListPosts() {
-        return postRepository.findAll()
+    List<PostResponseDTO> getListPosts(String userId) {
+        return postRepository.findAllByUserId(userId)
                 .stream()
                 .map {it -> postMapper.mapToResponseDto(it)}
                 .collect()
