@@ -1,5 +1,6 @@
 package com.fake.twitter.controller
 
+import com.fake.twitter.model.dto.FavoritePostRequestDTO
 import com.fake.twitter.model.dto.PostDTO
 import com.fake.twitter.model.dto.PostResponseDTO
 import com.fake.twitter.service.PostService
@@ -52,4 +53,18 @@ class PostController {
     ResponseEntity<Void> deletePost(@PathVariable String postId) {
         return ResponseEntity.ok(postService.deletePost(postId))
     }
+
+    // add favorite post
+    @PostMapping("/add-favorite")
+    ResponseEntity<Void> addFavoritePost(@RequestBody FavoritePostRequestDTO favoritePostRequest){
+        return ResponseEntity.ok(postService.addFavoritePost(favoritePostRequest))
+    }
+
+
+    // remove favorite post
+    @DeleteMapping("/remove-favorite/{favoritePostId}")
+    ResponseEntity<Void> removeFavoritePost(@PathVariable String favoritePostId){
+        return ResponseEntity.ok(postService.removeFavoritePost(favoritePostId))
+    }
+
 }

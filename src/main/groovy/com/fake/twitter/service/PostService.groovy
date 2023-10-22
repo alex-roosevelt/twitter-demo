@@ -1,5 +1,6 @@
 package com.fake.twitter.service
 
+import com.fake.twitter.model.dto.FavoritePostRequestDTO
 import com.fake.twitter.model.dto.PostDTO
 import com.fake.twitter.model.dto.PostResponseDTO
 
@@ -15,4 +16,7 @@ interface PostService {
 
     void deletePost(String postId)
 
+    void addFavoritePost(FavoritePostRequestDTO favoritePostRequest)
+
+    void removeFavoritePost(String favoritePostId)
 }

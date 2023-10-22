@@ -1,6 +1,8 @@
 package com.fake.twitter.controller
 
 import com.fake.twitter.model.dto.UserDTO
+import com.fake.twitter.model.dto.UserSubscriptionDTO
+import com.fake.twitter.service.SubscribeService
 import com.fake.twitter.service.UserService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.RestController
 class UserController {
 
     private final UserService userService
+    private final SubscribeService subscribeService
 
-    UserController(UserService userService) {
+    UserController(UserService userService, SubscribeService subscribeService) {
         this.userService = userService
+        this.subscribeService = subscribeService
     }
 
     // create user
@@ -51,4 +55,27 @@ class UserController {
         return ResponseEntity.ok(userService.deleteUser(id))
     }
 
+    // subscribe user
+    @PostMapping("/subscribe")
+    ResponseEntity<Boolean> subscribeUser(@RequestBody UserSubscriptionDTO request) {
+        return ResponseEntity.ok(subscribeService.subscribe(request))
+    }
+
+    // unsubscribe user
+    @PostMapping("/unsubscribe")
+    ResponseEntity<Boolean> unSubscribeUser(@RequestBody UserSubscriptionDTO request) {
+        return ResponseEntity.ok(subscribeService.unSubscribe(request))
+    }
+
+    // get count subscribers
+    @GetMapping("/subscribe/count/{userId}")
+    ResponseEntity<Integer> getCountSubscribers(@PathVariable String userId) {
+        return ResponseEntity.ok(subscribeService.getCountSubscribers(userId))
+    }
+
+    // get list subscribers
+    @GetMapping("/subscribe/list/{userId}")
+    ResponseEntity<List<UserDTO>> getListSubscribers(@PathVariable String userId) {
+        return ResponseEntity.ok(subscribeService.getListSubscribers(userId))
+    }
 }
