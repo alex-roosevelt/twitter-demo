@@ -2,6 +2,7 @@ package com.fake.twitter.config.security.jwt
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
@@ -14,9 +15,10 @@ import javax.servlet.http.HttpServletResponse
 
 class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    public static final String HEADER_STRING = "Authorization";
-    public static final String TOKEN_PREFIX = "Bearer ";
-    public static final String SECRET = "SECRET_KEY";
+    public static final String HEADER_STRING = "Authorization"
+    public static final String TOKEN_PREFIX = "Bearer "
+    @Value('${auth.secret}')
+    public String SECRET
 
 
     JWTAuthorizationFilter(AuthenticationManager authManager) {

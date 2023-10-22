@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.fake.twitter.model.entity.UserEntity
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
@@ -17,8 +18,10 @@ import javax.servlet.http.HttpServletResponse
 class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager
 
-    public static final long EXPIRATION_TIME = 900_000 // 15 mins
-    public static final String SECRET = "SECRET_KEY"
+    @Value('${auth.expiration-time}')
+    public long EXPIRATION_TIME // 15 mins
+    @Value('${auth.secret}')
+    public String SECRET
 
 
     JWTAuthenticationFilter(AuthenticationManager authenticationManager) {

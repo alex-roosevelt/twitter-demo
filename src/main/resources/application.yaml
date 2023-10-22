@@ -10,3 +10,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/fake-twitter
+
+auth:
+  expiration-time: 900000
+  secret: SECRET_KEY
