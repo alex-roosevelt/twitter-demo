@@ -13,7 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 class SecurityUtil {
 
     static UserEntity getLoggedInUser() {
-        UserEntity UserEntity = null
+        UserEntity userEntity = null
         SecurityContext securityContext = SecurityContextHolder.getContext()
         Authentication auth
         if (securityContext != null) {
@@ -22,11 +22,11 @@ class SecurityUtil {
                 Object principal = auth.getPrincipal()
                 if (principal instanceof UserDetailsImpl) {
                     UserDetailsImpl authUserEntity = (UserDetailsImpl) principal
-                    UserEntity = authUserEntity.getUser()
+                    userEntity = authUserEntity.getUser()
                 }
             }
         }
-        return UserEntity
+        return userEntity
     }
 
     static Authentication signInUser(UserEntity userEntity) {
