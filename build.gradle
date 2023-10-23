@@ -34,7 +34,12 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+// https://mvnrepository.com/artifact/org.spockframework/spock-core
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+
+
 }
+
 
 tasks.named('test') {
     useJUnitPlatform()
